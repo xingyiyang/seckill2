@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.dao.SeckillDao">
+    <!--目的：为DAO接口方法提供sql语句配置-->
+    <update id="reduceNumber">       
+        UPDATE
+        seckill
+        SET
+        number = number -1
+        WHERE
+        seckill_id = #{seckillId}
+        AND start_time <![CDATA[<=]]> #{killTime}
+        AND end_time >= #{killTime}
+        AND number > 0;
+    </update>
+
+     <!-- #{}和${}的区别 -->
+     <!-- 最简单的区别就是${}解析穿过来的参数值不带单引号，#{}解析传过来参数带单引号 -->
+     <!--   使用#{}语法,MyBatis会产生PreparedStatement语句中，并且安全的设置PreparedStatement参数，这个过程中MyBatis会进行必要的安全检查和转义
+     ${}方式会引发SQL注入的问题、同时也会影响SQL语句的预编译，所以从安全性和性能的角度出发，能使用#{}的情况下就不要使用${}
+            但是${}在什么情况下使用呢？比如，动态SQL中的字段名，如：ORDER BY ${columnName}
+     -->
+    <select id="queryById" resultType="Seckill" parameterType="long">
+        SELECT seckill_id,name,number,start_time,end_time,create_time
+        from seckill
+        WHERE seckill_id = #{seckillId}      
+    </select>
+
+    <select id="queryAll" resultType="Seckill">
+        SELECT seckill_id,name,number,start_time,end_time,create_time
+        from seckill
+        ORDER BY create_time DESC
+        limit #{offset},#{limit}
+    </select>
+
+    <!--使用Mybatis调用存储过程-->
+    <select id="killByProcedure" statementType="CALLABLE">
+        call execute_seckill (
+          #{seckillId,jdbcType=BIGINT,mode=IN},
+          #{phone,jdbcType=BIGINT,mode=IN},
+          #{killTime,jdbcType=TIMESTAMP,mode=IN},
+          #{result,jdbcType=INTEGER,mode=OUT}
+        )
+    </select>
+
+</mapper>

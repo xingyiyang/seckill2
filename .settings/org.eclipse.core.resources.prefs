@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/seckill/dao/SeckillDao.java=UTF-8
+encoding//src/main/java/com/seckill/dao/SuccessKilledDao.java=UTF-8
+encoding//src/main/java/com/seckill/dto/Exposer.java=UTF-8
+encoding//src/main/java/com/seckill/dto/SeckillExecution.java=UTF-8
+encoding//src/main/java/com/seckill/dto/SeckillResult.java=UTF-8
+encoding//src/main/java/com/seckill/entity/Seckill.java=UTF-8
+encoding//src/main/java/com/seckill/entity/SuccessKilled.java=UTF-8
+encoding//src/main/java/com/seckill/enums/SeckillStateEnum.java=UTF-8
+encoding//src/main/java/com/seckill/exception/RepeatKillException.java=UTF-8
+encoding//src/main/java/com/seckill/exception/SeckillCloseException.java=UTF-8
+encoding//src/main/java/com/seckill/exception/SeckillException.java=UTF-8
+encoding//src/main/java/com/seckill/service/SeckillService.java=UTF-8
+encoding//src/main/java/com/seckill/service/impl/SeckillServiceImpl.java=UTF-8
+encoding//src/main/java/com/seckill/web/seckillController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/common/head.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/common/tag.jsp=UTF-8
